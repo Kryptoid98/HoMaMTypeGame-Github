@@ -10,9 +10,13 @@ import SpriteKit
 
 class CreatureData{
     var name : String
+    var moveDistance: Int
+    var speed : Int
     // var baseHealth
     
-    init(name: String){
+    init(name: String, moveDistance : Int, speed: Int){
         self.name = name
+        self.moveDistance = moveDistance
+        self.speed = speed
     }
 }

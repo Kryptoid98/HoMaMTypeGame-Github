@@ -17,41 +17,47 @@ enum eCreatureStates: Int{
     
 }
 
-class Creature : SKNode, Entity{
+class Creature : SKSpriteNode, Entity{
     var animationNames = ["Attack", "Death", "Hit", "Idle", "Walk"] // This could be in the Animatable class
     var animations: [SKAction] = []
     var animState : eCreatureStates = .IDLE
     
     var creatureData : CreatureData
+    var creatureCount : Int
     
-    var spriteNode : SKSpriteNode?
+    var tileCoords = TileCoords(column: 0, row: 0) //These are just default values
+    var tileDefinition : SKTileDefinition?
+    
     let countLabel = SKLabelNode(text: "0")
     
-    required init(creatureData : CreatureData, creatureCount : Int) {
+    required init(creatureData : CreatureData, creatureCount : Int, tileCoords: TileCoords, tileDefinition : SKTileDefinition, owningPlayer: Player) {
+        
         self.creatureData = creatureData
-        super.init()
-        
-        //Set up node
-        self.position = CGPoint.zero
-        
-        //Set up sprite node
+        self.tileCoords = tileCoords
+        self.tileDefinition = tileDefinition
+        self.creatureCount = creatureCount
         let defaultTexture = SKTexture(imageNamed: creatureData.name + "Idle(Frame 1)")
-        spriteNode = SKSpriteNode(texture: defaultTexture, color: UIColor.red, size: CGSize(width: 100, height: 100))//defaultTexture.size())
         
+        super.init(texture: defaultTexture, color: UIColor.clear, size: defaultTexture.size() * 1.25)
+        
+        self.name = creatureData.name
+        anchorPoint = CGPoint(x: 0.5, y: 0)
+        zPosition = Constants.creatureZOrder
+        
+            
         for i in 0..<animationNames.count{
             CreateAnimation(startName: creatureData.name + animationNames[i] + "(Frame ", endName: ")")
         }
         
-        self.addChild(spriteNode!)
-        spriteNode?.run(animations[animState.rawValue])
+        run(animations[animState.rawValue], withKey: "animation")
         
         
         //Set up Label
         countLabel.fontSize = 30
         countLabel.text = String(creatureCount)
         countLabel.color = UIColor.white
-        countLabel.position = CGPoint(x: (spriteNode?.frame.minX)!, y: (spriteNode?.frame.minY)!)
-        countLabel.zPosition = 3
+        countLabel.position = CGPoint(x: frame.minX, y: frame.minY)
+        countLabel.zPosition = Constants.creatureZOrder + 1
         addChild(countLabel)
         
         //run(SKAction.move(to: CGPoint(x:100, y:100), duration: 3))
@@ -61,20 +67,22 @@ class Creature : SKNode, Entity{
         fatalError("Use Init()")
     }
     
-    func Update() {
-       //print (spriteNode)
+    public func MoveToNewGridspot(position : CGPoint, scene : SKScene){
+        removeAction(forKey: "animation")
+        animState = .WALK
+        run(animations[animState.rawValue])
+        
+        let move = SKAction.move(to: position, duration: 2)
+        run(SKAction.sequence([move])){
+            self.animState = .IDLE
+            self.run(self.animations[self.animState.rawValue])
+        }
+        
     }
     
-    public func IterateAnimation(){
-        //VERY TEMPORARY METHOD DEFINITION
-        if(animState == .ATTACK){ animState = .DEATH}
-        else if(animState == .DEATH){ animState = .HIT}
-        else if(animState == .HIT){ animState = .IDLE}
-        else if(animState == .IDLE){ animState = .WALK}
-        else if(animState == .WALK){ animState = .ATTACK}
-        
-        if(spriteNode?.hasActions() != nil){spriteNode?.removeAllActions()}
-        spriteNode?.run(animations[animState.rawValue])
+    func Update() {
+       //print (spriteNode)
+        //print(action(forKey: "animation"))
     }
 }
 

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4500D3742496FE060063D112 /* CGPoint&Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500D3732496FE060063D112 /* CGPoint&Extensions.swift */; };
+		4500D3762496FE930063D112 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500D3752496FE930063D112 /* Player.swift */; };
+		4500D378249702700063D112 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4500D377249702700063D112 /* Constants.swift */; };
+		451A32112499D156005B40C8 /* BattleGridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451A32102499D156005B40C8 /* BattleGridController.swift */; };
+		45669B1B24959CE9006E48FD /* GameTiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 45669B1A24959CE9006E48FD /* GameTiles.sks */; };
+		458A12A2249823F300C5AE00 /* TileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458A12A1249823F300C5AE00 /* TileHelper.swift */; };
 		45AF41982494528700D40FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AF41972494528700D40FF2 /* AppDelegate.swift */; };
 		45AF419A2494528700D40FF2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 45AF41992494528700D40FF2 /* GameScene.sks */; };
 		45AF419E2494528700D40FF2 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AF419D2494528700D40FF2 /* GameScene.swift */; };
@@ -20,9 +26,17 @@
 		45AF41B724945AB900D40FF2 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AF41B624945AB900D40FF2 /* Entity.swift */; };
 		45AF41B924945FFF00D40FF2 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AF41B824945FFF00D40FF2 /* Animatable.swift */; };
 		45AF41BB249477D000D40FF2 /* CreatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AF41BA249477D000D40FF2 /* CreatureManager.swift */; };
+		45F4CA612497373400502351 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F4CA602497373400502351 /* Types.swift */; };
+		45F4CA6324973F1600502351 /* CGSize&Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F4CA6224973F1600502351 /* CGSize&Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4500D3732496FE060063D112 /* CGPoint&Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint&Extensions.swift"; sourceTree = "<group>"; };
+		4500D3752496FE930063D112 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		4500D377249702700063D112 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		451A32102499D156005B40C8 /* BattleGridController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleGridController.swift; sourceTree = "<group>"; };
+		45669B1A24959CE9006E48FD /* GameTiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameTiles.sks; sourceTree = "<group>"; };
+		458A12A1249823F300C5AE00 /* TileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileHelper.swift; sourceTree = "<group>"; };
 		45AF41942494528700D40FF2 /* HoMaMTypeGame2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoMaMTypeGame2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45AF41972494528700D40FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45AF41992494528700D40FF2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -38,6 +52,8 @@
 		45AF41B624945AB900D40FF2 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		45AF41B824945FFF00D40FF2 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		45AF41BA249477D000D40FF2 /* CreatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureManager.swift; sourceTree = "<group>"; };
+		45F4CA602497373400502351 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		45F4CA6224973F1600502351 /* CGSize&Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize&Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +67,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4500D3722496FDA30063D112 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4500D3732496FE060063D112 /* CGPoint&Extensions.swift */,
+				45F4CA602497373400502351 /* Types.swift */,
+				45F4CA6224973F1600502351 /* CGSize&Extensions.swift */,
+				458A12A1249823F300C5AE00 /* TileHelper.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		45AF418B2494528700D40FF2 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +106,7 @@
 				45AF41A42494528A00D40FF2 /* Assets.xcassets */,
 				45AF41A62494528A00D40FF2 /* LaunchScreen.storyboard */,
 				45AF41A92494528A00D40FF2 /* Info.plist */,
+				45669B1A24959CE9006E48FD /* GameTiles.sks */,
 			);
 			path = HoMaMTypeGame2;
 			sourceTree = "<group>";
@@ -86,12 +114,16 @@
 		45AF41AF249452F700D40FF2 /* MyClasses */ = {
 			isa = PBXGroup;
 			children = (
+				4500D3722496FDA30063D112 /* Utilities */,
 				45AF41B02494531500D40FF2 /* Creature.swift */,
 				45AF41B22494572000D40FF2 /* CreatureData.swift */,
 				45AF41B4249459B100D40FF2 /* Extensions.swift */,
 				45AF41B624945AB900D40FF2 /* Entity.swift */,
 				45AF41B824945FFF00D40FF2 /* Animatable.swift */,
 				45AF41BA249477D000D40FF2 /* CreatureManager.swift */,
+				4500D3752496FE930063D112 /* Player.swift */,
+				4500D377249702700063D112 /* Constants.swift */,
+				451A32102499D156005B40C8 /* BattleGridController.swift */,
 			);
 			path = MyClasses;
 			sourceTree = "<group>";
@@ -158,6 +190,7 @@
 				45AF419A2494528700D40FF2 /* GameScene.sks in Resources */,
 				45AF41A52494528A00D40FF2 /* Assets.xcassets in Resources */,
 				45AF41A82494528A00D40FF2 /* LaunchScreen.storyboard in Resources */,
+				45669B1B24959CE9006E48FD /* GameTiles.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,15 +201,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4500D3762496FE930063D112 /* Player.swift in Sources */,
 				45AF41B12494531500D40FF2 /* Creature.swift in Sources */,
 				45AF41B924945FFF00D40FF2 /* Animatable.swift in Sources */,
 				45AF41B5249459B100D40FF2 /* Extensions.swift in Sources */,
+				458A12A2249823F300C5AE00 /* TileHelper.swift in Sources */,
+				4500D3742496FE060063D112 /* CGPoint&Extensions.swift in Sources */,
 				45AF41BB249477D000D40FF2 /* CreatureManager.swift in Sources */,
 				45AF41B724945AB900D40FF2 /* Entity.swift in Sources */,
 				45AF419E2494528700D40FF2 /* GameScene.swift in Sources */,
+				45F4CA612497373400502351 /* Types.swift in Sources */,
 				45AF41A02494528700D40FF2 /* GameViewController.swift in Sources */,
+				451A32112499D156005B40C8 /* BattleGridController.swift in Sources */,
 				45AF41B32494572000D40FF2 /* CreatureData.swift in Sources */,
 				45AF41982494528700D40FF2 /* AppDelegate.swift in Sources */,
+				4500D378249702700063D112 /* Constants.swift in Sources */,
+				45F4CA6324973F1600502351 /* CGSize&Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

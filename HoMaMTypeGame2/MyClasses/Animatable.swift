@@ -21,11 +21,12 @@ extension Animatable{
         var texArray : [SKTexture] = []
         for i in 1...4{
             let name = startName + "\(i)" + endName
-            print(name)
+            //print(name)
             texArray.append(SKTexture(pixelImagedNamed: name))
         }
         
         let newAnimation = SKAction.repeatForever(SKAction.animate(with: texArray, timePerFrame: 0.2))
+        //let newAnimation = SKAction.animate(with: texArray, timePerFrame: 0.2)
         animations.append(newAnimation)
     }
 }

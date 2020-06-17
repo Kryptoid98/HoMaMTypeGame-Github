@@ -9,6 +9,7 @@
 import SpriteKit
 
 protocol Entity: class { //Try SKNode here kater
-    
+    //METHODS THAT MUST BE OVERWRITTEN
+    //func Start()
     func Update()
 }
