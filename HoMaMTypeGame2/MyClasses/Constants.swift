@@ -15,4 +15,8 @@ class Constants{
     //Sprite Constants
     //static let tilemapScale : CGFloat = 2
     static let creatureZOrder : CGFloat = 3
+    
+    //Grid Constants
+    static let gridColumnSize = 17
+    static let gridRowSize = 11
 }

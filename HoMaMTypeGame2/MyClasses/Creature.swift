@@ -46,7 +46,10 @@ class Creature : SKSpriteNode, Entity{
         
             
         for i in 0..<animationNames.count{
-            CreateAnimation(startName: creatureData.name + animationNames[i] + "(Frame ", endName: ")")
+            let startName = creatureData.name + animationNames[i] + "(Frame "
+            if(animationNames[i] == "Idle" || animationNames[i] == "Walk"){
+                CreateAnimation(startName: startName, endName: ")", isLooping: true)
+            }else { CreateAnimation(startName: startName, endName: ")", isLooping: false) }
         }
         
         run(animations[animState.rawValue], withKey: "animation")

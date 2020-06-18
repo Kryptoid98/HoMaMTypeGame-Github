@@ -20,7 +20,8 @@ enum eBattleState {
 class GameScene: SKScene {
     
     var creatureSpawnGrid : SKTileMapNode?
-    var gridLayout : SKTileMapNode?
+    var battleGridController : BattleGridController?
+    var battleGrid : SKTileMapNode?
     var player1 : Player?
     var player2 : Player?
 
@@ -30,10 +31,30 @@ class GameScene: SKScene {
     
     var battleState = eBattleState.INITIALIZE
     
+//    convenience override init() {
+//
+//        self.init()
+//
+//    }
+//    } init() {
+//        battleGridController = BattleGridController()
+//        super.init()
+//
+//
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
+    
+    
+    
     //This isnt so much the Start method as it is, this scene is now moved into the game view.
     override func didMove(to view: SKView) {
+        battleGridController = BattleGridController(scene: self)
+        battleGrid = battleGridController?.battleGrid
         creatureSpawnGrid = childNode(withName: "SpawnGrid") as? SKTileMapNode
-        gridLayout = childNode(withName: "BattleGrid") as? SKTileMapNode
         
         player1 = Player(creatureData:[eCreatureGlossary.EFREET, eCreatureGlossary.GHOST, eCreatureGlossary.SPIDER, eCreatureGlossary.SPIDER, eCreatureGlossary.SPIDER],playerID:  1)
         player2 = Player(creatureData:[eCreatureGlossary.SPIDER, eCreatureGlossary.GHOST, eCreatureGlossary.EFREET, eCreatureGlossary.GHOST, eCreatureGlossary.SPIDER],playerID:  2)
@@ -142,7 +163,7 @@ class GameScene: SKScene {
     }
     
     func GetTileDistanceFromActiveCreature(touchPos : CGPoint) -> TileCoords{
-        let newPosition = GetTileCoordsAtPosition(tilemap: gridLayout!, position: touchPos)
+        let newPosition = GetTileCoordsAtPosition(tilemap: battleGrid!, position: touchPos)
         let columnDistance = abs((activeCreature?.tileCoords.column)! - newPosition.column)
         let rowDistance = abs((activeCreature?.tileCoords.row)! - newPosition.row)
         
@@ -152,33 +173,18 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let position = touches.first?.location(in: self) else {return}
         
-//        var tex = SKTexture(pixelImagedNamed: "gridHallow")
-//        var tile = SKTileDefinition(texture: tex)
-//        //var rule = SKTileGroupRule(adjacency: .adjacencyAll, tileDefinitions: [tile])
-//
-//        var tileset = gridLayout!.tileSet.tileGroups
-//        for i in 0..<tileset.count{
-//            print(tileset[i].name)
-//        }
-//
-//
-//
-//        gridLayout!.setTileGroup(gridLayout!.tileSet.tileGroups[1], forColumn: 1, row: 1)
-
-        //var asdasd = SKTileGroup(tileDefinition: tile!)
-        //print(asdasd.)
-        if(battleState == eBattleState.PLAYER_TURN) { MoveCreature(clickPos: position) }
+        if(battleState == eBattleState.PLAYER_TURN) { TakeCreatureTurn(clickPos: position) }
     }
     
-    func MoveCreature(clickPos: CGPoint){
+    func TakeCreatureTurn(clickPos: CGPoint){
         let distanceCoords = GetTileDistanceFromActiveCreature(touchPos: clickPos)
         //print(distanceCoords)
         if(distanceCoords.column <= creaturesInBattleInOrder![activeCreatureIndex].creatureData.moveDistance &&
             distanceCoords.row <= creaturesInBattleInOrder![activeCreatureIndex].creatureData.moveDistance){
             //creaturesInBattleInOrder![activeCreatureIndex].MoveToNewGridspot(position: clickPos, scene: self)
             
-            let clickCoords = GetTileCoordsAtPosition(tilemap: gridLayout!, position: clickPos)
-            let tileCenter = gridLayout?.centerOfTile(atColumn: clickCoords.column, row: clickCoords.row)
+            let clickCoords = GetTileCoordsAtPosition(tilemap: battleGrid!, position: clickPos)
+            let tileCenter = battleGrid?.centerOfTile(atColumn: clickCoords.column, row: clickCoords.row)
             
             let moveCreatureAction = SKAction.move(to: tileCenter!, duration: 0.25 * Double(distanceCoords.column))
             

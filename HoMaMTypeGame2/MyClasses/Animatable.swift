@@ -16,7 +16,7 @@ protocol Animatable : class{
 }
 
 extension Animatable{
-    func CreateAnimation(startName: String, endName : String){
+    func CreateAnimation(startName: String, endName : String, isLooping : Bool){
 
         var texArray : [SKTexture] = []
         for i in 1...4{
@@ -25,7 +25,15 @@ extension Animatable{
             texArray.append(SKTexture(pixelImagedNamed: name))
         }
         
-        let newAnimation = SKAction.repeatForever(SKAction.animate(with: texArray, timePerFrame: 0.2))
+        var newAnimation : SKAction
+        
+        if isLooping {
+            newAnimation = SKAction.repeatForever(SKAction.animate(with: texArray, timePerFrame: 0.2))
+        }
+        else {
+            newAnimation = SKAction.animate(with: texArray, timePerFrame: 0.2)
+        }
+        
         //let newAnimation = SKAction.animate(with: texArray, timePerFrame: 0.2)
         animations.append(newAnimation)
     }
